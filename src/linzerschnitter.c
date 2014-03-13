@@ -36,8 +36,8 @@ snd_seq_t *open_seq(){
         fprintf(stderr, "Error opening ALSA sequencer.\n");
         exit(1);
     }
-    snd_seq_set_client_name(seq_handle, "LinzerSchnitteMIDI");
-    if (snd_seq_create_simple_port(seq_handle, "LinzerSchnitteMIDI",
+    snd_seq_set_client_name(seq_handle, "LSMidi");
+    if (snd_seq_create_simple_port(seq_handle, "LSMidi",
         SND_SEQ_PORT_CAP_WRITE|SND_SEQ_PORT_CAP_SUBS_WRITE,
         SND_SEQ_PORT_TYPE_APPLICATION) < 0) {
         fprintf(stderr, "Error creating sequencer port.\n");

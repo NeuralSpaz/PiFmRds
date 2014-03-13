@@ -98,7 +98,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <sndfile.h>
-
+#include <alsa/asoundlib.h>
 #include "rds.h"
 #include "linzerschnitter.h"
 
@@ -579,7 +579,7 @@ int main(int argc, char **argv) {
     
     tx(carrier_freq, sf, pi, ps, rt, ppm);
     
-    free(note_active)
-    free(wavetable)
+    free(note_active);
+    free(wavetable);
     return (0);
 }
