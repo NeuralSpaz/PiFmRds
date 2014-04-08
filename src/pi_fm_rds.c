@@ -100,6 +100,7 @@
 #include <sndfile.h>
 
 #include "rds.h"
+#include "linzerschnitter.h"
 
 
 #define NUM_SAMPLES        50000
@@ -520,6 +521,23 @@ int main(int argc, char **argv) {
     uint16_t pi = 0x1234;
     int16_t ppm = 0;
     
+    int debug = 0 ;
+    int sample_rate = 228000;
+
+    snd_seq_t *seq_handle;
+    seq_handle= open_seq();
+    connectkeyboard(seq_handle);
+
+    int *note_active;
+    note_active = (int *) malloc(128*sizeof(int));
+
+    int *wavetable;
+    wavetable = (int *) malloc(sample_rate*sizeof(int));
+    gen_wave_table(wavetable, sample_rate, debug);
+
+    
+    
+    
     for(int i=1; i<argc; i++) {
         char *arg = argv[i];
         char *param = NULL;
@@ -560,4 +578,8 @@ int main(int argc, char **argv) {
     }
     
     tx(carrier_freq, sf, pi, ps, rt, ppm);
+    
+    free(note_active)
+    free(wavetable)
+    return (0);
 }
